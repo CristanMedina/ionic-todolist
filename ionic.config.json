@@ -1,0 +1,7 @@
+{
+  "name": "otraApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
