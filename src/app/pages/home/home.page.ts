@@ -16,7 +16,8 @@ import {
     IonItemSliding,
     IonItemOption,
     IonItemOptions,
-    IonReorderGroup } from '@ionic/angular/standalone';
+    IonReorderGroup,
+    IonReorder } from '@ionic/angular/standalone';
 import { AlertService } from 'src/app/services/alert-service';
 import { ReorderEndCustomEvent } from '@ionic/angular';
 
@@ -24,7 +25,7 @@ import { ReorderEndCustomEvent } from '@ionic/angular';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonReorderGroup,
+  imports: [IonReorder, IonReorderGroup,
         IonItemOptions,
         IonItemOption,
         IonItemSliding,
@@ -87,6 +88,8 @@ export class HomePage {
 
     updatePosition(event: ReorderEndCustomEvent) {
         console.log(event);
+        this.tasks = event.detail.complete(this.tasks);
+        console.log(this.tasks);
     }
 
 }

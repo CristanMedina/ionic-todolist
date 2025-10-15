@@ -20,14 +20,12 @@
     <ion-list>
 
         <ion-reorder-group [disabled]="false" (ionReorderEnd)="updatePosition($event)">
-
-        </ion-reorder-group>
-
-        @for ( task of tasks; track task ){
+            @for ( task of tasks; track task ){
 
             <ion-item-sliding>
                 <ion-item>
                     <ion-label>{{ task }}</ion-label>
+                    <ion-reorder/>
                 </ion-item>
 
                 <ion-item-options side="end">
@@ -42,6 +40,8 @@
                 <ion-label>No hay tareas</ion-label>
             </ion-item>
         }
+        </ion-reorder-group>
+
     </ion-list>
 
 </ion-content>
