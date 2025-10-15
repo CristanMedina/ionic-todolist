@@ -12,14 +12,19 @@ import {
     IonButton,
     IonIcon,
     IonLabel,
-    IonList, IonItemSliding, IonItemOption, IonItemOptions } from '@ionic/angular/standalone';
+    IonList,
+    IonItemSliding,
+    IonItemOption,
+    IonItemOptions,
+    IonReorderGroup } from '@ionic/angular/standalone';
 import { AlertService } from 'src/app/services/alert-service';
+import { ReorderEndCustomEvent } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [
+  imports: [IonReorderGroup,
         IonItemOptions,
         IonItemOption,
         IonItemSliding,
@@ -75,6 +80,13 @@ export class HomePage {
 
     deleteTask(task: string){
         console.log(`Eliminando la tarea: ${task}`);
+        let index = this.tasks.findIndex(t => t === task);
+        this.tasks.splice(index,1);
+        this.alertService.showAlert('Tarea eliminada', 'La siguiente tarea fue eliminada con exito', task);
+    }
+
+    updatePosition(event: ReorderEndCustomEvent) {
+        console.log(event);
     }
 
 }

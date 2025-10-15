@@ -18,6 +18,11 @@
     </ion-item>
 
     <ion-list>
+
+        <ion-reorder-group [disabled]="false" (ionReorderEnd)="updatePosition($event)">
+
+        </ion-reorder-group>
+
         @for ( task of tasks; track task ){
 
             <ion-item-sliding>
